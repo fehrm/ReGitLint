@@ -351,7 +351,8 @@ public class Cleanup : ConsoleCommand {
 looks like jb dotnet tool isn't installed...
 you can install it by running the following command:
 
-dotnet tool install" + (!UseGlobalResharper ? string.Empty : "--global") + " JetBrains.ReSharper.GlobalTools");
+dotnet tool install" + (!UseGlobalResharper ? string.Empty : "--global") +
+                " JetBrains.ReSharper.GlobalTools");
             return 1;
         }
 
@@ -392,7 +393,9 @@ dotnet tool install" + (!UseGlobalResharper ? string.Empty : "--global") + " Jet
             exclude += @"""";
         }
 
-        var args = (!UseGlobalResharper ? "tool run jb cleanupcode" : "cleanupcode") + $@" ""{slnFile}"" "
+        var args =
+            (!UseGlobalResharper ? "tool run jb cleanupcode" : "cleanupcode") +
+            $@" ""{slnFile}"" "
             + $@"{exclude} --include=""{include}"" "
             + string.Join(" ", jbArgs);
 
